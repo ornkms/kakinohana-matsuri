@@ -401,9 +401,22 @@ body {
 
   backdrop-filter: blur(14px);
 
+  /*
+    タブが多い場合は横スクロール
+    スマホでも画面外にはみ出さない
+  */
   overflow-x: auto;
+  overflow-y: hidden;
 
   scrollbar-width: none;
+
+  -webkit-overflow-scrolling: touch;
+
+  /*
+    左右に少し余白を確保
+  */
+  scroll-padding-left: 10px;
+  scroll-padding-right: 10px;
 }
 
 .tab-nav::-webkit-scrollbar {
@@ -412,6 +425,8 @@ body {
 
 .tab-nav a {
   flex: 0 0 auto;
+
+  display: block;
 
   padding: 9px 20px;
 
@@ -424,6 +439,8 @@ body {
   letter-spacing: 0.05em;
 
   border-radius: 999px;
+
+  white-space: nowrap;
 
   transition:
     background 0.25s ease,
@@ -1318,7 +1335,28 @@ footer p:last-child {
 @media (max-width: 900px) {
 
   .tab-nav {
+    /*
+      タブが画面幅を超えたら
+      横方向にスワイプできるようにする
+    */
     justify-content: flex-start;
+
+    overflow-x: auto;
+    overflow-y: hidden;
+
+    -webkit-overflow-scrolling: touch;
+
+    scrollbar-width: none;
+  }
+
+  .tab-nav::-webkit-scrollbar {
+    display: none;
+  }
+
+  .tab-nav a {
+    flex: 0 0 auto;
+
+    white-space: nowrap;
   }
 
   .enjoy-grid {
@@ -1424,13 +1462,44 @@ footer p:last-child {
   ======================================== */
 
   .tab-nav {
+    /*
+      スマホではタブを横スクロール
+      左端・右端が見切れないようにする
+    */
+    justify-content: flex-start;
+
+    width: 100%;
+
     padding: 9px 10px;
+
+    overflow-x: auto;
+    overflow-y: hidden;
+
+    scrollbar-width: none;
+
+    -webkit-overflow-scrolling: touch;
+
+    /*
+      スクロール開始位置の余白
+    */
+    scroll-padding-left: 10px;
+    scroll-padding-right: 10px;
+  }
+
+  .tab-nav::-webkit-scrollbar {
+    display: none;
   }
 
   .tab-nav a {
+    flex: 0 0 auto;
+
+    display: block;
+
     padding: 8px 14px;
 
     font-size: 0.8rem;
+
+    white-space: nowrap;
   }
 
 

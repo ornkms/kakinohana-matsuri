@@ -20,19 +20,19 @@ html {
 
 body {
   font-family: "Noto Sans JP", sans-serif;
-
   color: #fff;
+  line-height: 1.8;
 
   background:
     linear-gradient(
       180deg,
-      #030511 0%,
-      #050817 35%,
-      #080d24 70%,
-      #040714 100%
+      rgba(3, 5, 17, 0.78) 0%,
+      rgba(5, 8, 23, 0.72) 35%,
+      rgba(8, 13, 36, 0.68) 70%,
+      rgba(4, 7, 20, 0.78) 100%
     );
 
-  line-height: 1.8;
+  overflow-x: hidden;
 }
 
 img {
@@ -51,23 +51,16 @@ a {
    ========================================================= */
 
 :root {
-
   --navy: #080d24;
-
   --deep-navy: #050817;
-
   --blue: #111b42;
 
   --orange: #425ca8;
-
   --yellow: #718cff;
 
   --cream: #eef2ff;
-
   --white: #ffffff;
-
   --light-blue: #c8d4ff;
-
 }
 
 
@@ -88,18 +81,83 @@ body {
 
 
 /* =========================================================
-   04. HERO
+   04. MATSURI BACKGROUND IMAGE
+   ========================================================= */
+
+/*
+  お祭りの夜の写真を背景にする部分
+  haikei.png をぼかして紺色になじませる
+*/
+
+.matsuri-bg {
+  position: fixed;
+
+  inset: 0;
+
+  width: 100%;
+  height: 100%;
+
+  overflow: hidden;
+
+  z-index: -2;
+
+  pointer-events: none;
+}
+
+.matsuri-bg::before {
+  content: "";
+
+  position: absolute;
+
+  inset: 0;
+
+  background:
+    linear-gradient(
+      180deg,
+      rgba(3, 5, 17, 0.55) 0%,
+      rgba(5, 8, 23, 0.45) 40%,
+      rgba(8, 13, 36, 0.55) 75%,
+      rgba(4, 7, 20, 0.70) 100%
+    );
+
+  z-index: 2;
+}
+
+.matsuri-bg img {
+  position: absolute;
+
+  top: 50%;
+  left: 50%;
+
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+
+  transform:
+    translate(-50%, -50%)
+    scale(1.08);
+
+  filter:
+    blur(10px)
+    brightness(0.72)
+    saturate(0.9);
+
+  opacity: 0.72;
+}
+
+
+/* =========================================================
+   05. HERO
    ========================================================= */
 
 .hero {
-
   position: relative;
 
   min-height: 100vh;
   min-height: 100svh;
 
   display: flex;
-
   align-items: center;
   justify-content: center;
 
@@ -110,11 +168,10 @@ body {
 
 
 /* =========================================================
-   05. HERO VIDEO
+   06. HERO VIDEO
    ========================================================= */
 
 .hero-video {
-
   position: absolute;
 
   inset: 0;
@@ -129,11 +186,10 @@ body {
 
 
 /* =========================================================
-   06. HERO OVERLAY
+   07. HERO OVERLAY
    ========================================================= */
 
 .hero-overlay {
-
   position: absolute;
 
   inset: 0;
@@ -148,11 +204,10 @@ body {
 
 
 /* =========================================================
-   07. HERO CONTENT
+   08. HERO CONTENT
    ========================================================= */
 
 .hero-content {
-
   position: relative;
 
   z-index: 3;
@@ -165,10 +220,11 @@ body {
 }
 
 
-/* イベントタイトル */
+/* =========================================================
+   HERO TITLE
+   ========================================================= */
 
 .hero-content h1 {
-
   font-family: "Yuji Boku", serif;
 
   font-size:
@@ -188,10 +244,11 @@ body {
 }
 
 
-/* 日付 */
+/* =========================================================
+   HERO DATE
+   ========================================================= */
 
 .hero-date {
-
   margin-top: 28px;
 
   font-size:
@@ -208,10 +265,11 @@ body {
 }
 
 
-/* 時間 */
+/* =========================================================
+   HERO TIME
+   ========================================================= */
 
 .hero-time {
-
   margin-top: 4px;
 
   font-size:
@@ -224,10 +282,11 @@ body {
 }
 
 
-/* 場所 */
+/* =========================================================
+   HERO PLACE
+   ========================================================= */
 
 .hero-place {
-
   margin-top: 8px;
 
   font-size: 1rem;
@@ -239,10 +298,11 @@ body {
 }
 
 
-/* Heroボタン */
+/* =========================================================
+   HERO BUTTON
+   ========================================================= */
 
 .hero-btn {
-
   display: inline-flex;
 
   align-items: center;
@@ -274,26 +334,22 @@ body {
 }
 
 .hero-btn:hover {
-
   background: var(--yellow);
 
   color: var(--deep-navy);
 
-  transform:
-    translateY(-3px);
+  transform: translateY(-3px);
 
   box-shadow:
-    0 8px 25px
-    rgba(113, 140, 255, 0.3);
+    0 8px 25px rgba(113, 140, 255, 0.3);
 }
 
 
 /* =========================================================
-   08. HERO FLYER
+   HERO FLYER
    ========================================================= */
 
 .hero-flyer {
-
   position: absolute;
 
   width:
@@ -306,20 +362,15 @@ body {
 
   opacity: 0.2;
 
-  transform:
-    rotate(6deg);
+  transform: rotate(6deg);
 
   filter:
     drop-shadow(
-      0 20px 35px
-      rgba(0, 0, 0, 0.6)
+      0 20px 35px rgba(0, 0, 0, 0.6)
     );
 
   animation:
-    flyerFloat
-    5s
-    ease-in-out
-    infinite;
+    flyerFloat 5s ease-in-out infinite;
 }
 
 
@@ -328,7 +379,6 @@ body {
    ========================================================= */
 
 .tab-nav {
-
   position: sticky;
 
   top: 0;
@@ -344,14 +394,12 @@ body {
   padding: 12px 16px;
 
   background:
-    rgba(5, 8, 23, 0.94);
+    rgba(8, 15, 50, 0.92);
 
   border-bottom:
-    1px solid
-    rgba(113, 140, 255, 0.2);
+    1px solid rgba(113, 140, 255, 0.25);
 
-  backdrop-filter:
-    blur(14px);
+  backdrop-filter: blur(14px);
 
   overflow-x: auto;
 
@@ -362,9 +410,7 @@ body {
   display: none;
 }
 
-
 .tab-nav a {
-
   flex: 0 0 auto;
 
   padding: 9px 20px;
@@ -384,9 +430,7 @@ body {
     color 0.25s ease;
 }
 
-
 .tab-nav a::before {
-
   content: "🏮";
 
   margin-right: 5px;
@@ -394,13 +438,10 @@ body {
   font-size: 0.8em;
 }
 
-
 .tab-nav a:hover {
-
   color: var(--deep-navy);
 
-  background:
-    var(--yellow);
+  background: var(--yellow);
 }
 
 
@@ -409,7 +450,6 @@ body {
    ========================================================= */
 
 .section {
-
   position: relative;
 
   width:
@@ -420,9 +460,7 @@ body {
   padding: 110px 0;
 }
 
-
 .section h2 {
-
   position: relative;
 
   margin-bottom: 55px;
@@ -439,9 +477,7 @@ body {
   color: var(--white);
 }
 
-
 .section h2::before {
-
   content: "✦";
 
   display: block;
@@ -453,9 +489,7 @@ body {
   font-size: 1rem;
 }
 
-
 .section h2::after {
-
   content: "";
 
   display: block;
@@ -463,13 +497,11 @@ body {
   width: 55px;
   height: 3px;
 
-  margin:
-    18px auto 0;
+  margin: 18px auto 0;
 
   border-radius: 999px;
 
-  background:
-    var(--orange);
+  background: var(--orange);
 }
 
 
@@ -478,7 +510,6 @@ body {
    ========================================================= */
 
 .info-card {
-
   max-width: 800px;
 
   margin: 0 auto;
@@ -493,46 +524,36 @@ body {
   gap: 0;
 
   background:
-    rgba(255, 255, 255, 0.06);
+    rgba(255, 255, 255, 0.08);
 
   border:
-    1px solid
-    rgba(255, 255, 255, 0.14);
+    1px solid rgba(255, 255, 255, 0.18);
 
   border-radius: 24px;
 
-  backdrop-filter:
-    blur(12px);
+  backdrop-filter: blur(12px);
 
   box-shadow:
-    0 20px 60px
-    rgba(0, 0, 0, 0.35);
+    0 20px 60px rgba(0, 0, 0, 0.2);
 }
 
-
 .info-card p {
-
   padding: 20px;
 
   border-bottom:
-    1px solid
-    rgba(255, 255, 255, 0.1);
+    1px solid rgba(255, 255, 255, 0.12);
 }
-
 
 .info-card p:nth-last-child(-n + 2) {
   border-bottom: none;
 }
 
-
 .info-card strong {
-
   display: inline-block;
 
   margin-bottom: 5px;
 
-  color:
-    var(--yellow);
+  color: var(--yellow);
 
   font-size: 0.85rem;
 
@@ -541,11 +562,177 @@ body {
 
 
 /* =========================================================
-   12. PROGRAM TIMELINE
+   12. FLYER CARD
+   ========================================================= */
+
+.flyer-card {
+  max-width: 600px;
+
+  margin: 0 auto 55px;
+
+  text-align: center;
+}
+
+.flyer-open {
+  position: relative;
+
+  display: block;
+
+  width: 100%;
+
+  padding: 0;
+
+  border: none;
+
+  border-radius: 24px;
+
+  overflow: hidden;
+
+  cursor: pointer;
+
+  background:
+    rgba(255, 255, 255, 0.06);
+
+  box-shadow:
+    0 20px 60px rgba(0, 0, 0, 0.35);
+
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.flyer-open:hover {
+  transform: translateY(-5px);
+
+  box-shadow:
+    0 28px 70px rgba(0, 0, 0, 0.45);
+}
+
+.flyer-open img {
+  width: 100%;
+  height: auto;
+}
+
+.flyer-hint {
+  position: absolute;
+
+  right: 18px;
+  bottom: 18px;
+
+  padding: 7px 13px;
+
+  border-radius: 999px;
+
+  background:
+    rgba(5, 8, 23, 0.75);
+
+  color: #fff;
+
+  font-size: 0.7rem;
+
+  font-weight: 700;
+
+  letter-spacing: 0.12em;
+
+  backdrop-filter: blur(8px);
+}
+
+
+/* =========================================================
+   13. FLYER MODAL
+   ========================================================= */
+
+.flyer-modal {
+  position: fixed;
+
+  inset: 0;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  padding: 30px;
+
+  background:
+    rgba(0, 0, 0, 0.88);
+
+  backdrop-filter: blur(10px);
+
+  opacity: 0;
+
+  visibility: hidden;
+
+  z-index: 999;
+
+  transition:
+    opacity 0.3s ease,
+    visibility 0.3s ease;
+}
+
+.flyer-modal.is-open {
+  opacity: 1;
+
+  visibility: visible;
+}
+
+.flyer-modal-image {
+  max-width: 90vw;
+  max-height: 90vh;
+
+  width: auto;
+  height: auto;
+
+  border-radius: 10px;
+
+  box-shadow:
+    0 25px 80px rgba(0, 0, 0, 0.6);
+}
+
+.flyer-close {
+  position: absolute;
+
+  top: 20px;
+  right: 25px;
+
+  width: 50px;
+  height: 50px;
+
+  border: none;
+
+  border-radius: 50%;
+
+  background:
+    rgba(255, 255, 255, 0.12);
+
+  color: #fff;
+
+  font-size: 2rem;
+
+  line-height: 1;
+
+  cursor: pointer;
+
+  backdrop-filter: blur(10px);
+
+  transition:
+    background 0.3s ease,
+    transform 0.3s ease;
+}
+
+.flyer-close:hover {
+  background:
+    rgba(113, 140, 255, 0.5);
+
+  transform: rotate(90deg);
+}
+
+
+/* =========================================================
+   14. PROGRAM TIMELINE
    ========================================================= */
 
 .timeline {
-
   position: relative;
 
   max-width: 760px;
@@ -555,9 +742,7 @@ body {
   padding-left: 70px;
 }
 
-
 .timeline::before {
-
   content: "";
 
   position: absolute;
@@ -580,9 +765,7 @@ body {
     );
 }
 
-
 .timeline-item {
-
   position: relative;
 
   display: grid;
@@ -597,11 +780,10 @@ body {
   padding: 20px 22px;
 
   background:
-    rgba(255, 255, 255, 0.06);
+    rgba(255, 255, 255, 0.07);
 
   border:
-    1px solid
-    rgba(255, 255, 255, 0.1);
+    1px solid rgba(255, 255, 255, 0.12);
 
   border-radius: 16px;
 
@@ -610,9 +792,7 @@ body {
     background 0.3s ease;
 }
 
-
 .timeline-item::before {
-
   content: "";
 
   position: absolute;
@@ -625,51 +805,38 @@ body {
 
   border-radius: 50%;
 
-  background:
-    var(--yellow);
+  background: var(--yellow);
 
   box-shadow:
-    0 0 0 5px
-    rgba(113, 140, 255, 0.12),
-
-    0 0 15px
-    rgba(113, 140, 255, 0.4);
+    0 0 0 5px rgba(113, 140, 255, 0.12),
+    0 0 15px rgba(113, 140, 255, 0.4);
 }
-
 
 .timeline-item:hover {
-
-  transform:
-    translateX(5px);
+  transform: translateX(5px);
 
   background:
-    rgba(255, 255, 255, 0.1);
+    rgba(255, 255, 255, 0.12);
 }
 
-
 .timeline-item span {
-
-  color:
-    var(--yellow);
+  color: var(--yellow);
 
   font-size: 1.2rem;
 
   font-weight: 700;
 }
 
-
 .timeline-item p {
-
   font-weight: 500;
 }
 
 
 /* =========================================================
-   花火大会 SPECIAL
+   FIREWORKS SPECIAL
    ========================================================= */
 
 .timeline-item.fireworks {
-
   border-color:
     rgba(113, 140, 255, 0.5);
 
@@ -681,27 +848,20 @@ body {
     );
 }
 
-
 .timeline-item.fireworks::before {
-
-  background:
-    var(--yellow);
+  background: var(--yellow);
 
   box-shadow:
-    0 0 0 5px
-    rgba(113, 140, 255, 0.15),
-
-    0 0 20px
-    rgba(113, 140, 255, 0.55);
+    0 0 0 5px rgba(113, 140, 255, 0.15),
+    0 0 20px rgba(113, 140, 255, 0.55);
 }
 
 
 /* =========================================================
-   13. ENJOY CARDS
+   15. ENJOY CARDS
    ========================================================= */
 
 .enjoy-grid {
-
   display: grid;
 
   grid-template-columns:
@@ -710,179 +870,77 @@ body {
   gap: 25px;
 }
 
-
-/* カード */
-
 .event-card {
-
-  position: relative;
-
   overflow: hidden;
 
-  min-height: 330px;
-
   background:
-    #080d24;
+    rgba(255, 255, 255, 0.08);
 
   border:
-    1px solid
-    rgba(255, 255, 255, 0.16);
+    1px solid rgba(255, 255, 255, 0.16);
 
   border-radius: 22px;
 
   box-shadow:
-    0 15px 40px
-    rgba(0, 0, 0, 0.35);
+    0 15px 40px rgba(0, 0, 0, 0.18);
 
   transition:
     transform 0.35s ease,
     box-shadow 0.35s ease;
 }
 
+.event-card:hover {
+  transform: translateY(-8px);
 
-/* カード画像 */
+  box-shadow:
+    0 25px 55px rgba(0, 0, 0, 0.28);
+}
 
 .event-card img {
-
-  position: absolute;
-
-  inset: -10px;
-
-  width:
-    calc(100% + 20px);
-
-  height:
-    calc(100% + 20px);
-
-  max-width: none;
-
+  width: 100%;
+  aspect-ratio: 16 / 10;
   object-fit: cover;
 
   filter:
-    blur(4px);
+    blur(2px)
+    brightness(0.8);
 
-  transform:
-    scale(1.05);
+  transform: scale(1.03);
 
-  opacity: 0.72;
+  background: #182d70;
 
   transition:
-    transform 0.5s ease,
-    filter 0.5s ease;
+    filter 0.3s ease,
+    transform 0.3s ease;
 }
-
-
-/* 画像の上の暗いフィルター */
-
-.event-card::after {
-
-  content: "";
-
-  position: absolute;
-
-  inset: 0;
-
-  background:
-    linear-gradient(
-      180deg,
-      rgba(3, 5, 17, 0.15) 0%,
-      rgba(3, 5, 17, 0.35) 40%,
-      rgba(3, 5, 17, 0.88) 100%
-    );
-
-  pointer-events: none;
-
-  z-index: 1;
-}
-
-
-/* 文字部分 */
 
 .event-card-content {
-
-  position: absolute;
-
-  left: 0;
-  right: 0;
-  bottom: 0;
-
-  z-index: 2;
-
-  padding: 28px 25px;
-
-  text-align: left;
+  padding: 0;
 }
-
-
-/* タイトル */
 
 .event-card h3 {
+  padding: 20px 20px 5px;
 
-  margin-bottom: 7px;
+  color: var(--yellow);
 
-  color:
-    var(--white);
-
-  font-size:
-    1.25rem;
-
-  font-weight: 700;
-
-  letter-spacing: 0.05em;
-
-  text-shadow:
-    0 2px 8px
-    rgba(0, 0, 0, 0.7);
+  font-size: 1.15rem;
 }
-
-
-/* 紹介文 */
 
 .event-card p {
+  padding: 0 20px 22px;
 
   color:
-    rgba(255, 255, 255, 0.88);
+    rgba(255, 255, 255, 0.82);
 
   font-size: 0.9rem;
-
-  line-height: 1.7;
-
-  text-shadow:
-    0 2px 6px
-    rgba(0, 0, 0, 0.8);
-}
-
-
-/* ホバー */
-
-.event-card:hover {
-
-  transform:
-    translateY(-8px);
-
-  box-shadow:
-    0 25px 55px
-    rgba(0, 0, 0, 0.5);
-}
-
-
-.event-card:hover img {
-
-  transform:
-    scale(1.1);
-
-  filter:
-    blur(2px);
-
 }
 
 
 /* =========================================================
-   14. ENTRY
+   16. ENTRY
    ========================================================= */
 
 .entry-card {
-
   max-width: 700px;
 
   margin: 0 auto;
@@ -892,33 +950,30 @@ body {
   text-align: center;
 
   background:
-    rgba(255, 255, 255, 0.06);
+    rgba(255, 255, 255, 0.08);
 
   border:
-    1px solid
-    rgba(255, 255, 255, 0.14);
+    1px solid rgba(255, 255, 255, 0.18);
 
   border-radius: 24px;
 
-  backdrop-filter:
-    blur(12px);
+  backdrop-filter: blur(12px);
 }
 
-
 .entry-card h3 {
-
   margin-bottom: 18px;
 
-  color:
-    var(--yellow);
+  color: var(--yellow);
 
   font-size: 1.2rem;
 }
 
 
-.download-btn,
-.call-btn {
+/* =========================================================
+   DOWNLOAD BUTTON
+   ========================================================= */
 
+.download-btn {
   display: inline-flex;
 
   align-items: center;
@@ -932,31 +987,24 @@ body {
 
   border-radius: 999px;
 
+  background: var(--orange);
+
+  color: #fff;
+
   font-weight: 700;
 
   letter-spacing: 0.06em;
 
+  box-shadow:
+    0 8px 20px rgba(66, 92, 168, 0.3);
+
   transition:
     transform 0.3s ease,
-    box-shadow 0.3s ease;
+    box-shadow 0.3s ease,
+    background 0.3s ease;
 }
-
-
-.download-btn {
-
-  background:
-    var(--orange);
-
-  color: #fff;
-
-  box-shadow:
-    0 8px 20px
-    rgba(66, 92, 168, 0.3);
-}
-
 
 .download-btn::before {
-
   content: "↓";
 
   margin-right: 8px;
@@ -964,29 +1012,30 @@ body {
   font-size: 1.2rem;
 }
 
+.download-btn:hover {
+  transform: translateY(-3px);
 
-.download-btn:hover,
-.call-btn:hover {
+  background: #506bc0;
 
-  transform:
-    translateY(-3px);
+  box-shadow:
+    0 12px 28px rgba(66, 92, 168, 0.4);
 }
 
 
-.contact-box {
+/* =========================================================
+   CONTACT
+   ========================================================= */
 
+.contact-box {
   margin-top: 10px;
 
   padding-top: 35px;
 
   border-top:
-    1px solid
-    rgba(255, 255, 255, 0.15);
+    1px solid rgba(255, 255, 255, 0.15);
 }
 
-
 .contact-box p {
-
   margin-bottom: 15px;
 
   color:
@@ -994,36 +1043,62 @@ body {
 }
 
 
+/* =========================================================
+   CALL BUTTON
+   ========================================================= */
+
 .call-btn {
+  display: inline-flex;
+
+  align-items: center;
+  justify-content: center;
+
+  width: 100%;
+
+  min-height: 55px;
 
   margin-bottom: 0;
 
-  background:
-    var(--yellow);
+  border-radius: 999px;
 
-  color:
-    var(--deep-navy);
+  background: var(--yellow);
+
+  color: var(--deep-navy);
+
+  font-weight: 700;
+
+  letter-spacing: 0.06em;
 
   box-shadow:
-    0 8px 20px
-    rgba(113, 140, 255, 0.25);
+    0 8px 20px rgba(113, 140, 255, 0.25);
+
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease,
+    background 0.3s ease;
 }
 
-
 .call-btn::before {
-
   content: "📞";
 
   margin-right: 8px;
 }
 
+.call-btn:hover {
+  transform: translateY(-3px);
+
+  background: #8da2ff;
+
+  box-shadow:
+    0 12px 28px rgba(113, 140, 255, 0.35);
+}
+
 
 /* =========================================================
-   15. NOTICE
+   17. NOTICE
    ========================================================= */
 
 .notice-list {
-
   max-width: 800px;
 
   margin: 0 auto;
@@ -1033,54 +1108,43 @@ body {
   list-style: none;
 
   background:
-    rgba(255, 255, 255, 0.06);
+    rgba(255, 255, 255, 0.07);
 
   border:
-    1px solid
-    rgba(255, 255, 255, 0.14);
+    1px solid rgba(255, 255, 255, 0.14);
 
   border-radius: 20px;
 }
 
-
 .notice-list li {
-
   position: relative;
 
-  padding:
-    13px 0 13px 30px;
+  padding: 13px 0 13px 30px;
 
   border-bottom:
-    1px solid
-    rgba(255, 255, 255, 0.1);
+    1px solid rgba(255, 255, 255, 0.1);
 }
 
-
 .notice-list li:last-child {
-
   border-bottom: none;
 }
 
-
 .notice-list li::before {
-
   content: "⚠";
 
   position: absolute;
 
   left: 0;
 
-  color:
-    var(--yellow);
+  color: var(--yellow);
 }
 
 
 /* =========================================================
-   16. ACCESS
+   18. ACCESS
    ========================================================= */
 
 .access-card {
-
   max-width: 850px;
 
   margin: 0 auto;
@@ -1088,24 +1152,19 @@ body {
   text-align: center;
 }
 
-
 .access-card > p {
-
   margin-bottom: 25px;
 
-  color:
-    var(--yellow);
+  color: var(--yellow);
 
   font-size: 1.3rem;
 
   font-weight: 700;
 }
 
-
 .access-address {
-
   color:
-    rgba(255, 255, 255, 0.8) !important;
+    rgba(255, 255, 255, 0.85) !important;
 
   font-size: 0.95rem !important;
 
@@ -1120,27 +1179,22 @@ body {
    ========================================================= */
 
 .map-container {
-
   width: 100%;
 
   overflow: hidden;
 
   border:
-    1px solid
-    rgba(255, 255, 255, 0.16);
+    1px solid rgba(255, 255, 255, 0.16);
 
   border-radius: 18px;
 
   background: #fff;
 
   box-shadow:
-    0 20px 50px
-    rgba(0, 0, 0, 0.3);
+    0 20px 50px rgba(0, 0, 0, 0.2);
 }
 
-
 .map-container iframe {
-
   display: block;
 
   width: 100%;
@@ -1151,10 +1205,11 @@ body {
 }
 
 
-/* Google Map ボタン */
+/* =========================================================
+   GOOGLE MAP BUTTON
+   ========================================================= */
 
 .map-btn {
-
   display: inline-flex;
 
   align-items: center;
@@ -1165,24 +1220,20 @@ body {
   padding: 14px 32px;
 
   border:
-    2px solid
-    var(--yellow);
+    2px solid var(--yellow);
 
   border-radius: 999px;
 
-  background:
-    var(--yellow);
+  background: var(--yellow);
 
-  color:
-    var(--deep-navy);
+  color: var(--deep-navy);
 
   font-weight: 700;
 
   letter-spacing: 0.06em;
 
   box-shadow:
-    0 8px 20px
-    rgba(113, 140, 255, 0.25);
+    0 8px 20px rgba(113, 140, 255, 0.25);
 
   transition:
     transform 0.3s ease,
@@ -1190,61 +1241,47 @@ body {
     background 0.3s ease;
 }
 
-
 .map-btn::before {
-
   content: "📍";
 
   margin-right: 8px;
 }
 
-
 .map-btn:hover {
+  transform: translateY(-3px);
 
-  transform:
-    translateY(-3px);
-
-  background:
-    #8da2ff;
+  background: #8da2ff;
 
   box-shadow:
-    0 12px 28px
-    rgba(113, 140, 255, 0.35);
+    0 12px 28px rgba(113, 140, 255, 0.35);
 }
 
 
 /* =========================================================
-   17. FOOTER
+   19. FOOTER
    ========================================================= */
 
 footer {
-
   padding: 55px 20px;
 
   text-align: center;
 
   background:
-    rgba(0, 0, 0, 0.25);
+    rgba(0, 0, 0, 0.2);
 
   border-top:
-    1px solid
-    rgba(255, 255, 255, 0.1);
+    1px solid rgba(255, 255, 255, 0.1);
 }
 
-
 footer p:first-child {
-
   margin-bottom: 5px;
 
-  color:
-    var(--yellow);
+  color: var(--yellow);
 
   font-weight: 700;
 }
 
-
 footer p:last-child {
-
   color:
     rgba(255, 255, 255, 0.6);
 
@@ -1253,21 +1290,19 @@ footer p:last-child {
 
 
 /* =========================================================
-   18. ANIMATION
+   20. ANIMATION
    ========================================================= */
 
 @keyframes flyerFloat {
 
   0%,
   100% {
-
     transform:
       translateY(0)
       rotate(6deg);
   }
 
   50% {
-
     transform:
       translateY(-15px)
       rotate(4deg);
@@ -1277,27 +1312,21 @@ footer p:last-child {
 
 
 /* =========================================================
-   19. TABLET
+   21. TABLET
    ========================================================= */
 
 @media (max-width: 900px) {
 
   .tab-nav {
-
-    justify-content:
-      flex-start;
+    justify-content: flex-start;
   }
 
-
   .enjoy-grid {
-
     grid-template-columns:
       repeat(2, 1fr);
   }
 
-
   .hero-flyer {
-
     width: 250px;
 
     right: -20px;
@@ -1310,7 +1339,7 @@ footer p:last-child {
 
 
 /* =========================================================
-   20. MOBILE
+   22. MOBILE
    ========================================================= */
 
 @media (max-width: 600px) {
@@ -1320,61 +1349,67 @@ footer p:last-child {
   }
 
 
-  /* -------------------------
+  /* ========================================
+     Background
+  ======================================== */
+
+  .matsuri-bg img {
+    width: auto;
+
+    min-width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+
+    transform:
+      translate(-50%, -50%)
+      scale(1.12);
+
+    filter:
+      blur(10px)
+      brightness(0.5)
+      saturate(0.75);
+
+    opacity: 0.5;
+  }
+
+
+  /* ========================================
      Hero
-  ------------------------- */
+  ======================================== */
 
   .hero {
-
-    min-height:
-      92svh;
+    min-height: 92svh;
   }
-
 
   .hero-content {
-
-    padding:
-      30px 18px;
+    padding: 30px 18px;
   }
 
-
   .hero-content h1 {
-
     font-size:
       clamp(2.5rem, 13vw, 4rem);
 
-    letter-spacing:
-      0.08em;
+    letter-spacing: 0.08em;
   }
-
 
   .hero-date {
-
     margin-top: 22px;
 
-    font-size:
-      1.15rem;
+    font-size: 1.15rem;
   }
-
 
   .hero-place {
-
-    font-size:
-      0.9rem;
+    font-size: 0.9rem;
   }
-
 
   .hero-btn {
-
     margin-top: 28px;
 
-    padding:
-      13px 28px;
+    padding: 13px 28px;
   }
 
-
   .hero-flyer {
-
     width: 190px;
 
     right: -35px;
@@ -1384,499 +1419,80 @@ footer p:last-child {
   }
 
 
-  /* -------------------------
+  /* ========================================
      Navigation
-  ------------------------- */
+  ======================================== */
 
   .tab-nav {
-
-    padding:
-      9px 10px;
+    padding: 9px 10px;
   }
-
 
   .tab-nav a {
+    padding: 8px 14px;
 
-    padding:
-      8px 14px;
-
-    font-size:
-      0.8rem;
+    font-size: 0.8rem;
   }
 
 
-  /* -------------------------
+  /* ========================================
      Section
-  ------------------------- */
+  ======================================== */
 
   .section {
-
     width:
       min(100% - 28px, 1100px);
 
-    padding:
-      80px 0;
+    padding: 80px 0;
   }
-
 
   .section h2 {
+    margin-bottom: 38px;
 
-    margin-bottom:
-      38px;
-
-    font-size:
-      1.9rem;
+    font-size: 1.9rem;
   }
 
 
-  /* -------------------------
+  /* ========================================
      Info
-  ------------------------- */
+  ======================================== */
 
   .info-card {
-
     display: block;
 
-    padding:
-      18px;
+    padding: 18px;
   }
-
 
   .info-card p {
-
-    padding:
-      18px 12px;
+    padding: 18px 12px;
   }
-
 
   .info-card p:nth-last-child(-n + 2) {
-
     border-bottom:
-      1px solid
-      rgba(255, 255, 255, 0.12);
+      1px solid rgba(255, 255, 255, 0.12);
   }
-
 
   .info-card p:last-child {
-
-    border-bottom:
-      none;
+    border-bottom: none;
   }
 
 
-  /* -------------------------
-     Timeline
-  ------------------------- */
+  /* ========================================
+     Flyer
+  ======================================== */
 
-  .timeline {
-
-    padding-left:
-      45px;
+  .flyer-card {
+    width: 100%;
   }
-
-
-  .timeline::before {
-
-    left:
-      14px;
-  }
-
-
-  .timeline-item {
-
-    grid-template-columns:
-      1fr;
-
-    gap:
-      2px;
-
-    margin-bottom:
-      18px;
-
-    padding:
-      17px;
-  }
-
-
-  .timeline-item::before {
-
-    left:
-      -38px;
-
-    top:
-      23px;
-  }
-
-
-  .timeline-item span {
-
-    font-size:
-      1.05rem;
-  }
-
-
-  .timeline-item p {
-
-    font-size:
-      0.9rem;
-  }
-
-
-  /* -------------------------
-     Enjoy
-  ------------------------- */
-
-  .enjoy-grid {
-
-    grid-template-columns:
-      1fr;
-
-    gap:
-      20px;
-  }
-
-
-  .event-card {
-
-    min-height:
-      300px;
-
-    border-radius:
-      18px;
-  }
-
-
-  .event-card-content {
-
-    padding:
-      24px 20px;
-  }
-
-
-  .event-card h3 {
-
-    font-size:
-      1.15rem;
-  }
-
-
-  .event-card p {
-
-    font-size:
-      0.88rem;
-  }
-
-
-  /* -------------------------
-     Entry
-  ------------------------- */
-
-  .entry-card {
-
-    padding:
-      28px 20px;
-  }
-
-
-  /* -------------------------
-     Notice
-  ------------------------- */
-
-  .notice-list {
-
-    padding:
-      18px 20px;
-  }
-
-
-  .notice-list li {
-
-    padding-left:
-      27px;
-
-    font-size:
-      0.9rem;
-  }
-
-
-  /* -------------------------
-     Map
-  ------------------------- */
-
-  .map-container {
-
-    border-radius:
-      18px;
-  }
-
-
-  .map-container iframe {
-
-    min-height:
-      300px;
-  }
-
-
-  /* -------------------------
-     Footer
-  ------------------------- */
-
-  footer {
-
-    padding:
-      45px 20px;
-  }
-
-}
-
-
-/* =========================================================
-   21. REDUCED MOTION
-   ========================================================= */
-
-@media (prefers-reduced-motion: reduce) {
-
-  html {
-    scroll-behavior: auto;
-  }
-
-
-  *,
-  *::before,
-  *::after {
-
-    animation-duration:
-      0.01ms !important;
-
-    animation-iteration-count:
-      1 !important;
-
-    transition-duration:
-      0.01ms !important;
-  }
-
-}
-
-/* =========================================================
-   FLYER CARD
-   ========================================================= */
-
-.flyer-card {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-
-/* フライヤー */
-
-.flyer-open {
-  position: relative;
-
-  width: min(500px, 100%);
-
-  padding: 0;
-
-  border: none;
-
-  background: transparent;
-
-  cursor: pointer;
-
-  border-radius: 24px;
-
-  overflow: hidden;
-
-  box-shadow:
-    0 20px 50px rgba(0, 0, 0, 0.45);
-
-  transition:
-    transform 0.35s ease,
-    box-shadow 0.35s ease;
-}
-
-.flyer-open:hover {
-  transform: translateY(-6px);
-
-  box-shadow:
-    0 28px 65px rgba(0, 0, 0, 0.55);
-}
-
-.flyer-open img {
-  width: 100%;
-  height: auto;
-
-  display: block;
-
-  transition:
-    transform 0.5s ease;
-}
-
-.flyer-open:hover img {
-  transform: scale(1.02);
-}
-
-
-/* TAP TO VIEW */
-
-.flyer-hint {
-  position: absolute;
-
-  left: 50%;
-  bottom: 20px;
-
-  transform: translateX(-50%);
-
-  padding: 7px 16px;
-
-  border:
-    1px solid rgba(255, 255, 255, 0.5);
-
-  border-radius: 999px;
-
-  background:
-    rgba(0, 0, 0, 0.45);
-
-  backdrop-filter: blur(8px);
-
-  color: #fff;
-
-  font-size: 0.7rem;
-
-  font-weight: 700;
-
-  letter-spacing: 0.15em;
-
-  pointer-events: none;
-}
-
-
-/* =========================================================
-   FLYER MODAL
-   ========================================================= */
-
-.flyer-modal {
-  position: fixed;
-
-  inset: 0;
-
-  z-index: 9999;
-
-  display: flex;
-
-  align-items: center;
-  justify-content: center;
-
-  padding: 30px;
-
-  background:
-    rgba(0, 0, 0, 0.88);
-
-  backdrop-filter: blur(10px);
-
-  opacity: 0;
-
-  visibility: hidden;
-
-  transition:
-    opacity 0.3s ease,
-    visibility 0.3s ease;
-}
-
-
-/* 開いた状態 */
-
-.flyer-modal.is-open {
-  opacity: 1;
-
-  visibility: visible;
-}
-
-
-/* 拡大フライヤー */
-
-.flyer-modal-image {
-  max-width: min(90vw, 700px);
-
-  max-height: 90vh;
-
-  width: auto;
-  height: auto;
-
-  object-fit: contain;
-
-  border-radius: 12px;
-
-  box-shadow:
-    0 25px 80px rgba(0, 0, 0, 0.7);
-
-  transform: scale(0.92);
-
-  transition:
-    transform 0.3s ease;
-}
-
-.flyer-modal.is-open .flyer-modal-image {
-  transform: scale(1);
-}
-
-
-/* 閉じるボタン */
-
-.flyer-close {
-  position: absolute;
-
-  top: 20px;
-  right: 25px;
-
-  width: 48px;
-  height: 48px;
-
-  border: none;
-
-  border-radius: 50%;
-
-  background:
-    rgba(255, 255, 255, 0.12);
-
-  color: #fff;
-
-  font-size: 2rem;
-
-  line-height: 1;
-
-  cursor: pointer;
-
-  backdrop-filter: blur(8px);
-
-  transition:
-    background 0.25s ease,
-    transform 0.25s ease;
-}
-
-.flyer-close:hover {
-  background:
-    rgba(255, 255, 255, 0.22);
-
-  transform: rotate(90deg);
-}
-
-
-/* =========================================================
-   MOBILE
-   ========================================================= */
-
-@media (max-width: 600px) {
 
   .flyer-open {
-    width: 92%;
     border-radius: 18px;
   }
 
   .flyer-hint {
-    bottom: 14px;
+    right: 12px;
+    bottom: 12px;
 
-    padding: 6px 13px;
+    padding: 6px 10px;
 
     font-size: 0.65rem;
   }
@@ -1886,7 +1502,7 @@ footer p:last-child {
   }
 
   .flyer-modal-image {
-    max-width: 92vw;
+    max-width: 94vw;
     max-height: 85vh;
 
     border-radius: 8px;
@@ -1896,36 +1512,137 @@ footer p:last-child {
     top: 12px;
     right: 12px;
 
-    width: 42px;
-    height: 42px;
+    width: 44px;
+    height: 44px;
 
     font-size: 1.7rem;
   }
 
+
+  /* ========================================
+     Timeline
+  ======================================== */
+
+  .timeline {
+    padding-left: 45px;
+  }
+
+  .timeline::before {
+    left: 14px;
+  }
+
+  .timeline-item {
+    grid-template-columns: 1fr;
+
+    gap: 2px;
+
+    margin-bottom: 18px;
+
+    padding: 17px;
+  }
+
+  .timeline-item::before {
+    left: -38px;
+
+    top: 23px;
+  }
+
+  .timeline-item span {
+    font-size: 1.05rem;
+  }
+
+  .timeline-item p {
+    font-size: 0.9rem;
+  }
+
+
+  /* ========================================
+     Enjoy
+  ======================================== */
+
+  .enjoy-grid {
+    grid-template-columns: 1fr;
+
+    gap: 20px;
+  }
+
+  .event-card {
+    border-radius: 18px;
+  }
+
+  .event-card img {
+    aspect-ratio: 16 / 9;
+  }
+
+
+  /* ========================================
+     Entry
+  ======================================== */
+
+  .entry-card {
+    padding: 28px 20px;
+  }
+
+
+  /* ========================================
+     Notice
+  ======================================== */
+
+  .notice-list {
+    padding: 18px 20px;
+  }
+
+  .notice-list li {
+    padding-left: 27px;
+
+    font-size: 0.9rem;
+  }
+
+
+  /* ========================================
+     Map
+  ======================================== */
+
+  .map-container iframe {
+    min-height: 280px;
+  }
+
+  .map-btn {
+    width: 100%;
+
+    padding: 13px 20px;
+  }
+
+
+  /* ========================================
+     Footer
+  ======================================== */
+
+  footer {
+    padding: 45px 20px;
+  }
+
 }
+
 
 /* =========================================================
-   協賛企業リンク
+   23. REDUCED MOTION
    ========================================================= */
 
-.sponsor-link {
-  display: inline-block;
+@media (prefers-reduced-motion: reduce) {
 
-  color: var(--light-blue);
+  html {
+    scroll-behavior: auto;
+  }
 
-  font-weight: 500;
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
 
-  transition:
-    color 0.3s ease,
-    transform 0.3s ease;
-}
+    animation-iteration-count: 1 !important;
 
-.sponsor-link:hover {
-  color: var(--yellow);
+    transition-duration: 0.01ms !important;
+  }
 
-  transform: translateX(4px);
-}
-
-.sponsor-name {
-  color: rgba(255, 255, 255, 0.85);
 }

@@ -80,6 +80,7 @@
       muted
       loop
       playsinline
+      preload="auto"
     >
 
       <source
@@ -704,14 +705,14 @@
         </p>
 
 
-<button
-  type="button"
-  class="entry-open-btn"
-  data-target="karaokeForm"
-  data-open-text="📝 カラオケ大会に申し込む"
->
-  📝 カラオケ大会に申し込む
-</button>
+        <button
+          type="button"
+          class="entry-open-btn"
+          data-target="karaokeForm"
+          data-open-text="📝 カラオケ大会に申し込む"
+        >
+          📝 カラオケ大会に申し込む
+        </button>
 
 
         <div
@@ -747,14 +748,14 @@
         </p>
 
 
-<button
-  type="button"
-  class="entry-open-btn"
-  data-target="yukataForm"
-  data-open-text="📝 浴衣コンテストに申し込む"
->
-  📝 浴衣コンテストに申し込む
-</button>
+        <button
+          type="button"
+          class="entry-open-btn"
+          data-target="yukataForm"
+          data-open-text="📝 浴衣コンテストに申し込む"
+        >
+          📝 浴衣コンテストに申し込む
+        </button>
 
 
         <div
@@ -773,24 +774,25 @@
 
       </div>
 
-<!-- ================================
-     メールでのお問い合わせ
-================================= -->
 
-<div class="entry-mail">
+      <!-- ====================================
+           メールでのお問い合わせ
+      ==================================== -->
 
-  <p>
-    その他のお問い合わせはこちら
-  </p>
+      <div class="entry-mail">
 
-  <a
-    href="mailto:kakinohana2026@gmail.com"
-    class="entry-mail-btn"
-  >
-    ✉️ メールでお問い合わせ
-  </a>
+        <p>
+          その他のお問い合わせはこちら
+        </p>
 
-</div>
+        <a
+          href="mailto:kakinohana2026@gmail.com"
+          class="entry-mail-btn"
+        >
+          ✉️ メールでお問い合わせ
+        </a>
+
+      </div>
 
     </div>
 
@@ -1078,6 +1080,30 @@
       });
 
     });
+
+
+
+    /* ========================================
+       花火動画 自動再生
+    ======================================== */
+
+    const heroVideo =
+      document.querySelector(".hero-video");
+
+
+    if (heroVideo) {
+
+      heroVideo.muted = true;
+
+      heroVideo.play().catch(() => {
+
+        console.log(
+          "動画の自動再生がブロックされました。"
+        );
+
+      });
+
+    }
 
 
   </script>

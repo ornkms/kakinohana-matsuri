@@ -1083,27 +1083,83 @@
 
 
 
-    /* ========================================
-       花火動画 自動再生
-    ======================================== */
+/* ========================================
+   花火動画 自動再生
+======================================== */
 
-    const heroVideo =
-      document.querySelector(".hero-video");
+const heroVideo =
+  document.querySelector(".hero-video");
 
 
-    if (heroVideo) {
+if (heroVideo) {
 
-      heroVideo.muted = true;
+  /* スマホ自動再生対策 */
 
-      heroVideo.play().catch(() => {
+  heroVideo.muted = true;
+  heroVideo.defaultMuted = true;
+  heroVideo.setAttribute("muted", "");
+  heroVideo.setAttribute("playsinline", "");
+  heroVideo.setAttribute("webkit-playsinline", "");
 
-        console.log(
-          "動画の自動再生がブロックされました。"
-        );
+  heroVideo.setAttribute("autoplay", "");
 
-      });
+  
+  /* 動画の読み込みが完了したら再生 */
+
+  const playHeroVideo = () => {
+
+    heroVideo.play().catch(() => {
+
+      console.log(
+        "動画の自動再生がブロックされました。"
+      );
+
+    });
+
+  };
+
+
+  /* 読み込み完了時 */
+
+  heroVideo.addEventListener(
+    "loadeddata",
+    playHeroVideo,
+    { once: true }
+  );
+
+
+  /* メタデータ読み込み時 */
+
+  heroVideo.addEventListener(
+    "loadedmetadata",
+    playHeroVideo,
+    { once: true }
+  );
+
+
+  /* ページ読み込み直後にも実行 */
+
+  playHeroVideo();
+
+
+  /* スマホでページが表示された時にも再生 */
+
+  document.addEventListener(
+    "visibilitychange",
+    () => {
+
+      if (
+        document.visibilityState === "visible"
+      ) {
+
+        playHeroVideo();
+
+      }
 
     }
+  );
+
+}
 
 
   </script>

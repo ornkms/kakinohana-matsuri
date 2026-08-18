@@ -74,22 +74,20 @@
 
     <!-- 花火動画 -->
 
-    <video
-      class="hero-video"
-      autoplay
-      muted
-      loop
-      playsinline
-      preload="auto"
-    >
-
-      <source
-        src="images/hanabi.mp4"
-        type="video/mp4"
-      >
-
-    </video>
-
+<video
+  class="hero-video"
+  autoplay
+  muted
+  loop
+  playsinline
+  webkit-playsinline
+  preload="auto"
+>
+  <source
+    src="images/hanabi.mp4"
+    type="video/mp4"
+  >
+</video>
 
     <!-- 動画の上のフィルター -->
 
@@ -1161,6 +1159,80 @@ if (heroVideo) {
 
 }
 
+/* ========================================
+   花火動画
+   スマホ自動再生対策
+======================================== */
+
+const heroVideo =
+  document.querySelector(".hero-video");
+
+if (heroVideo) {
+
+  heroVideo.muted = true;
+  heroVideo.defaultMuted = true;
+
+  const playVideo = () => {
+
+    heroVideo.play().catch(() => {
+      // 自動再生がブロックされた場合は何もしない
+    });
+
+  };
+
+
+  /* ページ読み込み時 */
+
+  playVideo();
+
+
+  /* 動画の読み込み完了時 */
+
+  heroVideo.addEventListener(
+    "loadeddata",
+    playVideo
+  );
+
+
+  heroVideo.addEventListener(
+    "canplay",
+    playVideo
+  );
+
+
+  /* ====================================
+     スマホで最初に画面を触ったら再生
+  ==================================== */
+
+  const startVideoOnInteraction = () => {
+
+    playVideo();
+
+    document.removeEventListener(
+      "touchstart",
+      startVideoOnInteraction
+    );
+
+    document.removeEventListener(
+      "click",
+      startVideoOnInteraction
+    );
+
+  };
+
+
+  document.addEventListener(
+    "touchstart",
+    startVideoOnInteraction,
+    { passive: true }
+  );
+
+  document.addEventListener(
+    "click",
+    startVideoOnInteraction
+  );
+
+}
 
   </script>
 

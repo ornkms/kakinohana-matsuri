@@ -1813,3 +1813,225 @@ footer p:last-child {
   }
 
 }
+
+/* =========================================================
+   ENTRY FORM
+========================================================= */
+
+.entry-item {
+  margin-bottom: 55px;
+}
+
+.entry-item:last-child {
+  margin-bottom: 0;
+}
+
+.entry-item h3 {
+  margin-bottom: 12px;
+
+  color: var(--yellow);
+
+  font-size: 1.25rem;
+}
+
+.entry-item p {
+  margin-bottom: 22px;
+
+  color: rgba(255, 255, 255, 0.8);
+
+  font-size: 0.9rem;
+}
+
+
+/* ========================================
+   FORM OPEN BUTTON
+======================================== */
+
+.entry-open-btn {
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  width: 100%;
+
+  min-height: 58px;
+
+  padding: 14px 20px;
+
+  border: 2px solid var(--yellow);
+
+  border-radius: 999px;
+
+  background: rgba(113, 140, 255, 0.12);
+
+  color: var(--yellow);
+
+  font-family: inherit;
+
+  font-size: 0.95rem;
+
+  font-weight: 700;
+
+  letter-spacing: 0.05em;
+
+  cursor: pointer;
+
+  transition:
+    background 0.3s ease,
+    color 0.3s ease,
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.entry-open-btn:hover {
+  transform: translateY(-3px);
+
+  background: var(--yellow);
+
+  color: var(--deep-navy);
+
+  box-shadow:
+    0 10px 25px rgba(113, 140, 255, 0.25);
+}
+
+
+/* ========================================
+   GOOGLE FORM
+======================================== */
+
+
+
+.form-wrap iframe {
+  width: 100%;
+
+  min-height: 0;
+
+  border: none;
+
+  display: block;
+
+  grid-row: 1 / span 2;
+}
+
+
+/* ========================================
+   OPEN
+======================================== */
+
+
+
+/* フォームの高さ */
+
+#karaokeForm iframe {
+  height: 2271px;
+}
+
+#yukataForm iframe {
+  height: 1354px;
+}
+
+/* =========================================================
+   FORM CLOSE時は完全に非表示
+========================================================= */
+
+.form-wrap {
+  display: none;
+}
+
+.form-wrap.is-open {
+  display: block;
+  margin-top: 25px;
+  opacity: 1;
+}
+
+/* Googleフォームの高さ */
+
+#karaokeForm iframe {
+  width: 100%;
+  height: 2271px;
+  border: none;
+  display: block;
+}
+
+#yukataForm iframe {
+  width: 100%;
+  height: 1354px;
+  border: none;
+  display: block;
+}
+
+/* =========================================================
+   ENTRY MAIL
+========================================================= */
+
+.entry-mail {
+  margin-top: 45px;
+
+  padding-top: 35px;
+
+  border-top:
+    1px solid rgba(255, 255, 255, 0.15);
+
+  text-align: center;
+}
+
+.entry-mail p {
+  margin-bottom: 18px;
+
+  color:
+    rgba(255, 255, 255, 0.75);
+
+  font-size: 0.9rem;
+}
+
+
+/* メールボタン */
+
+.entry-mail-btn {
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  width: 100%;
+
+  min-height: 58px;
+
+  padding: 14px 20px;
+
+  border:
+    2px solid var(--yellow);
+
+  border-radius: 999px;
+
+  background:
+    rgba(113, 140, 255, 0.12);
+
+  color: var(--yellow);
+
+  font-family: inherit;
+
+  font-size: 0.95rem;
+
+  font-weight: 700;
+
+  letter-spacing: 0.05em;
+
+  transition:
+    background 0.3s ease,
+    color 0.3s ease,
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.entry-mail-btn:hover {
+  transform: translateY(-3px);
+
+  background: var(--yellow);
+
+  color: var(--deep-navy);
+
+  box-shadow:
+    0 10px 25px rgba(113, 140, 255, 0.25);
+}

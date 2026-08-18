@@ -689,35 +689,108 @@
     <div class="entry-card">
 
 
-      <!-- カラオケ -->
+      <!-- ====================================
+           カラオケ大会
+      ==================================== -->
 
-      <h3>
-        🎤 カラオケ大会
-      </h3>
+      <div class="entry-item">
 
-      <a
-        href="pdf/カラオケ大会エントリーシート.pdf"
-        class="download-btn"
-        download
-      >
-        申込書をダウンロード
-      </a>
+        <h3>
+          🎤 カラオケ大会
+        </h3>
+
+        <p>
+          カラオケ大会へ参加希望の方はこちらからお申し込みください。
+        </p>
 
 
+<button
+  type="button"
+  class="entry-open-btn"
+  data-target="karaokeForm"
+  data-open-text="📝 カラオケ大会に申し込む"
+>
+  📝 カラオケ大会に申し込む
+</button>
 
-      <!-- 浴衣 -->
 
-      <h3>
-        👘 浴衣コンテスト
-      </h3>
+        <div
+          class="form-wrap"
+          id="karaokeForm"
+        >
 
-      <a
-        href="pdf/浴衣コンテストエントリーシート.pdf"
-        class="download-btn"
-        download
-      >
-        申込書をダウンロード
-      </a>
+          <iframe
+            src="https://docs.google.com/forms/d/e/1FAIpQLSda-U3HGsvYP5KyAAcA4_F7sWSj1nxuEgVe8WLEN5lB2vRpSQ/viewform?embedded=true"
+            loading="lazy"
+            title="カラオケ大会申し込みフォーム"
+          >
+          </iframe>
+
+        </div>
+
+      </div>
+
+
+
+      <!-- ====================================
+           浴衣コンテスト
+      ==================================== -->
+
+      <div class="entry-item">
+
+        <h3>
+          👘 浴衣コンテスト
+        </h3>
+
+        <p>
+          浴衣コンテストへ参加希望の方はこちらからお申し込みください。
+        </p>
+
+
+<button
+  type="button"
+  class="entry-open-btn"
+  data-target="yukataForm"
+  data-open-text="📝 浴衣コンテストに申し込む"
+>
+  📝 浴衣コンテストに申し込む
+</button>
+
+
+        <div
+          class="form-wrap"
+          id="yukataForm"
+        >
+
+          <iframe
+            src="https://docs.google.com/forms/d/e/1FAIpQLScXV3nHsWblFoWNij4uwiKVeNzZjch8Yz4eQPLUePY5GMn_ZA/viewform?embedded=true"
+            loading="lazy"
+            title="浴衣コンテスト申し込みフォーム"
+          >
+          </iframe>
+
+        </div>
+
+      </div>
+
+<!-- ================================
+     メールでのお問い合わせ
+================================= -->
+
+<div class="entry-mail">
+
+  <p>
+    その他のお問い合わせはこちら
+  </p>
+
+  <a
+    href="mailto:kakinohana2026@gmail.com"
+    class="entry-mail-btn"
+  >
+    ✉️ メールでお問い合わせ
+  </a>
+
+</div>
 
     </div>
 
@@ -812,6 +885,7 @@
           allowfullscreen=""
           loading="lazy"
           referrerpolicy="no-referrer-when-downgrade"
+          title="垣花農村公園 Googleマップ"
         >
         </iframe>
 
@@ -908,6 +982,51 @@
         document.body.style.overflow = "";
 
       }
+
+    });
+
+
+
+    /* ========================================
+       Googleフォーム 開閉
+    ======================================== */
+
+    const entryButtons =
+      document.querySelectorAll(".entry-open-btn");
+
+
+    entryButtons.forEach((button) => {
+
+      button.addEventListener("click", () => {
+
+        const targetId =
+          button.dataset.target;
+
+        const target =
+          document.getElementById(targetId);
+
+
+        const isOpen =
+          target.classList.contains("is-open");
+
+
+        if (isOpen) {
+
+          target.classList.remove("is-open");
+
+          button.textContent =
+            button.dataset.openText || "📝 申し込む";
+
+        } else {
+
+          target.classList.add("is-open");
+
+          button.textContent =
+            "✕ 閉じる";
+
+        }
+
+      });
 
     });
 
